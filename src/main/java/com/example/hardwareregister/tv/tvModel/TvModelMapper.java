@@ -1,6 +1,6 @@
 package com.example.hardwareregister.tv.tvModel;
 
-import com.example.hardwareregister.tv.tvModel.dto.TvModelDto;
+import com.example.hardwareregister.hw.dto.TvModelDto;
 import com.example.hardwareregister.tv.tvModel.model.TvModel;
 import lombok.experimental.UtilityClass;
 

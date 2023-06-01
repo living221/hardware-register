@@ -1,5 +1,6 @@
 package com.example.hardwareregister.tv.tvModel.model;
 
+import com.example.hardwareregister.hw.model.Hw;
 import com.example.hardwareregister.tv.model.Tv;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -45,6 +46,6 @@ public class TvModel {
     private Boolean inStock;
 
     @ManyToOne
-    @JoinColumn(name = "tv_id", nullable = false)
-    private Tv tv;
+    @JoinColumn(name = "hw_reg_id")
+    private Hw hw;
 }

@@ -1,7 +1,7 @@
 package com.example.hardwareregister.tv.service;
 
 import com.example.hardwareregister.tv.dto.TvDto;
-import com.example.hardwareregister.tv.tvModel.dto.TvModelDto;
+import com.example.hardwareregister.hw.dto.TvModelDto;
 
 import java.util.List;
 

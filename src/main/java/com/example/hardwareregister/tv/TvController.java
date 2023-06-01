@@ -2,7 +2,7 @@ package com.example.hardwareregister.tv;
 
 import com.example.hardwareregister.tv.dto.TvDto;
 import com.example.hardwareregister.tv.service.TvService;
-import com.example.hardwareregister.tv.tvModel.dto.TvModelDto;
+import com.example.hardwareregister.hw.dto.TvModelDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

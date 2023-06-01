@@ -1,4 +1,4 @@
-package com.example.hardwareregister.tv.tvModel.dto;
+package com.example.hardwareregister.hw.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class TvModelDto {
+public class BaseModelDto {
     private Long id;
 
     private String modelName;
@@ -23,10 +23,6 @@ public class TvModelDto {
     private Integer size;
 
     private BigDecimal price;
-
-    private String category;
-
-    private String technology;
 
     private Boolean inStock;
 }

@@ -7,7 +7,7 @@ import com.example.hardwareregister.tv.dto.TvDto;
 import com.example.hardwareregister.tv.model.Tv;
 import com.example.hardwareregister.tv.tvModel.TvModelMapper;
 import com.example.hardwareregister.tv.tvModel.dao.TvModelRepository;
-import com.example.hardwareregister.tv.tvModel.dto.TvModelDto;
+import com.example.hardwareregister.hw.dto.TvModelDto;
 import com.example.hardwareregister.tv.tvModel.model.TvModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -81,7 +81,7 @@ public class TvServiceImpl implements TvService {
         Tv tv = tvById.get();
 
         TvModel tvModel = toTvModel(tvModelDto);
-        tvModel.setTv(tv);
+//        tvModel.setTv(tv);
 
         return toTvModelDto(tvModelRepository.save(tvModel));
     }

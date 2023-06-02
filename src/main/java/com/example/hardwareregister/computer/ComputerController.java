@@ -30,9 +30,14 @@ public class ComputerController {
         return computerService.getAllComputer();
     }
 
+    @GetMapping("/models")
+    public List<ComputerModelDto> getComputerModels() {
+        return computerService.getComputerModels();
+    }
+
     @GetMapping("/{computerId}/model")
-    public List<ComputerModelDto> getComputerModels(@PathVariable Long computerId) {
-        return computerService.getComputerModels(computerId);
+    public List<ComputerModelDto> getComputerModelsById(@PathVariable Long computerId) {
+        return computerService.getComputerModelsById(computerId);
     }
 
     @PostMapping("/{computerId}/model")

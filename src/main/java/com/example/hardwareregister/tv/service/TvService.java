@@ -1,5 +1,6 @@
 package com.example.hardwareregister.tv.service;
 
+import com.example.hardwareregister.SortType;
 import com.example.hardwareregister.tv.dto.TvDto;
 import com.example.hardwareregister.tv.tvModel.dto.TvModelDto;
 
@@ -12,7 +13,19 @@ public interface TvService {
 
     List<TvDto> getAllTv();
 
-    List<TvModelDto> getTvModels(Long tvId);
+    List<TvModelDto> getTvModelsByTvId(Long tvId);
 
     TvModelDto addTvModel(Long tvId, TvModelDto tvModelDto);
+
+    List<TvModelDto> getTvModels(SortType sortType);
+
+    List<TvModelDto> searchTvModels(String text);
+
+    List<TvModelDto> filterTvModels(String color,
+                                    String priceFrom,
+                                    String priceTo,
+                                    String inStock,
+                                    String category,
+                                    String tech,
+                                    String size);
 }

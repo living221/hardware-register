@@ -1,5 +1,6 @@
 package com.example.hardwareregister.smartphone.service;
 
+import com.example.hardwareregister.SortType;
 import com.example.hardwareregister.smartphone.dto.SmartphoneDto;
 import com.example.hardwareregister.smartphone.smartphoneModel.dto.SmartphoneModelDto;
 
@@ -12,7 +13,20 @@ public interface SmartphoneService {
 
     List<SmartphoneDto> getAllSmartphone();
 
-    List<SmartphoneModelDto> getSmartphoneModels(Long smartphoneId);
+    List<SmartphoneModelDto> getSmartphoneModelsById(Long smartphoneId);
 
     SmartphoneModelDto addSmartphoneModel(Long smartphoneId, SmartphoneModelDto smartphoneModelDto);
+
+    List<SmartphoneModelDto> getSmartphoneModels(SortType sortType);
+
+    List<SmartphoneModelDto> searchSmartphoneModels(String text);
+
+    List<SmartphoneModelDto> filterSmartphoneModels(
+            String colour,
+            String size,
+            String priceFrom,
+            String priceTo,
+            String inStock,
+            Integer cameraCount,
+            String memory);
 }

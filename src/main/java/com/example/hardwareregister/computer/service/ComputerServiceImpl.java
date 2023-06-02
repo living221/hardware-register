@@ -57,7 +57,7 @@ public class ComputerServiceImpl implements ComputerService {
     }
 
     @Override
-    public List<ComputerModelDto> getComputerModels(Long computerId) {
+    public List<ComputerModelDto> getComputerModelsById(Long computerId) {
         Optional<Computer> computerById = computerRepository.findById(computerId);
 
         if (!computerById.isPresent()) {
@@ -85,5 +85,12 @@ public class ComputerServiceImpl implements ComputerService {
         computerModel.setComputer(computer);
 
         return toComputerModelDto(computerModelRepository.save(computerModel));
+    }
+
+    @Override
+    public List<ComputerModelDto> getComputerModels() {
+        return computerModelRepository.findAll().stream()
+                .map(ComputerModelMapper::toComputerModelDto)
+                .collect(Collectors.toList());
     }
 }

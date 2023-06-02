@@ -12,7 +12,9 @@ public interface ComputerService {
 
     List<ComputerDto> getAllComputer();
 
-    List<ComputerModelDto> getComputerModels(Long computerId);
+    List<ComputerModelDto> getComputerModelsById(Long computerId);
 
     ComputerModelDto addComputerModel(Long computerId, ComputerModelDto computerModelDto);
+
+    List<ComputerModelDto> getComputerModels();
 }

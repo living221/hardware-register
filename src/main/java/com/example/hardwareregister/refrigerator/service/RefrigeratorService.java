@@ -1,9 +1,8 @@
 package com.example.hardwareregister.refrigerator.service;
 
-import com.example.hardwareregister.SortType;
+import com.example.hardwareregister.util.SortType;
 import com.example.hardwareregister.refrigerator.dto.RefrigeratorDto;
 import com.example.hardwareregister.refrigerator.refrigeratorModel.dto.RefrigeratorModelDto;
-import com.example.hardwareregister.tv.tvModel.dto.TvModelDto;
 
 import java.util.List;
 

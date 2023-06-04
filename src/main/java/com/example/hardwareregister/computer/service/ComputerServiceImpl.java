@@ -9,9 +9,11 @@ import com.example.hardwareregister.computer.dao.ComputerRepository;
 import com.example.hardwareregister.computer.dto.ComputerDto;
 import com.example.hardwareregister.computer.model.Computer;
 import com.example.hardwareregister.exceptions.ObjectNotFoundException;
+import com.example.hardwareregister.util.SortType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -88,8 +90,72 @@ public class ComputerServiceImpl implements ComputerService {
     }
 
     @Override
-    public List<ComputerModelDto> getComputerModels() {
-        return computerModelRepository.findAll().stream()
+    public List<ComputerModelDto> getComputerModels(SortType sortType) {
+        switch (sortType) {
+            case PRICE_ASC:
+                return computerModelRepository.findByOrderByPriceAsc().stream()
+                        .map(ComputerModelMapper::toComputerModelDto)
+                        .collect(Collectors.toList());
+
+            case PRICE_DES:
+                return computerModelRepository.findByOrderByPriceDesc().stream()
+                        .map(ComputerModelMapper::toComputerModelDto)
+                        .collect(Collectors.toList());
+
+            case ABC:
+                return computerModelRepository.findByOrderByModelNameAsc().stream()
+                        .map(ComputerModelMapper::toComputerModelDto)
+                        .collect(Collectors.toList());
+
+            case BCA:
+                return computerModelRepository.findByOrderByModelNameDesc().stream()
+                        .map(ComputerModelMapper::toComputerModelDto)
+                        .collect(Collectors.toList());
+            default:
+                throw new IllegalArgumentException("Unknown sorting: UNSUPPORTED_SORTING");
+        }
+    }
+
+    @Override
+    public List<ComputerModelDto> searchComputerModels(String text) {
+        String textQuery = "%" +
+                text.toLowerCase() +
+                "%";
+
+        return computerModelRepository.findAllByModelName(textQuery).stream()
+                .map(ComputerModelMapper::toComputerModelDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ComputerModelDto> filterTvModels(String colour,
+                                                 String sizeString,
+                                                 String priceFrom,
+                                                 String priceTo,
+                                                 String inStock,
+                                                 String category,
+                                                 String cpuType) {
+        int size = Integer.parseInt(sizeString);
+
+        List<ComputerModel> result = new ArrayList<>(computerModelRepository
+                .findAllByColourAndSizeAndCategoryAndProcessorType(colour, size, category, cpuType));
+
+        double to;
+        if (priceTo.equals("max")) {
+            to = 1_000_000_000d;
+        } else {
+            to = Double.parseDouble(priceTo);
+        }
+
+        double from = Double.parseDouble(priceFrom);
+
+        if (from <= to && to > 0.0d) {
+            result = result.stream().filter(t -> t.getPrice().doubleValue() < to)
+                    .filter(t -> t.getPrice().doubleValue() > from)
+                    .collect(Collectors.toList());
+        }
+
+        return result.stream()
                 .map(ComputerModelMapper::toComputerModelDto)
                 .collect(Collectors.toList());
     }

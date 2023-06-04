@@ -1,6 +1,6 @@
 package com.example.hardwareregister.tv.service;
 
-import com.example.hardwareregister.SortType;
+import com.example.hardwareregister.util.SortType;
 import com.example.hardwareregister.exceptions.ObjectNotFoundException;
 import com.example.hardwareregister.tv.TvMapper;
 import com.example.hardwareregister.tv.dao.TvRepository;

@@ -1,6 +1,6 @@
 package com.example.hardwareregister.smartphone.service;
 
-import com.example.hardwareregister.SortType;
+import com.example.hardwareregister.util.SortType;
 import com.example.hardwareregister.exceptions.ObjectNotFoundException;
 import com.example.hardwareregister.smartphone.SmartphoneMapper;
 import com.example.hardwareregister.smartphone.dao.SmartphoneRepository;

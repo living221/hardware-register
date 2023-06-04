@@ -2,6 +2,7 @@ package com.example.hardwareregister.computer.service;
 
 import com.example.hardwareregister.computer.computerModel.dto.ComputerModelDto;
 import com.example.hardwareregister.computer.dto.ComputerDto;
+import com.example.hardwareregister.util.SortType;
 
 import java.util.List;
 
@@ -16,5 +17,15 @@ public interface ComputerService {
 
     ComputerModelDto addComputerModel(Long computerId, ComputerModelDto computerModelDto);
 
-    List<ComputerModelDto> getComputerModels();
+    List<ComputerModelDto> getComputerModels(SortType sortType);
+
+    List<ComputerModelDto> searchComputerModels(String text);
+
+    List<ComputerModelDto> filterTvModels(String colour,
+                                          String size,
+                                          String priceFrom,
+                                          String priceTo,
+                                          String inStock,
+                                          String category,
+                                          String cpuType);
 }

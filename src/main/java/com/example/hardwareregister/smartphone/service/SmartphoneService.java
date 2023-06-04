@@ -1,6 +1,6 @@
 package com.example.hardwareregister.smartphone.service;
 
-import com.example.hardwareregister.SortType;
+import com.example.hardwareregister.util.SortType;
 import com.example.hardwareregister.smartphone.dto.SmartphoneDto;
 import com.example.hardwareregister.smartphone.smartphoneModel.dto.SmartphoneModelDto;
 

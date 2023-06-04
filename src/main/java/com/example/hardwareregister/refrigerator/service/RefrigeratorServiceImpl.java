@@ -1,6 +1,6 @@
 package com.example.hardwareregister.refrigerator.service;
 
-import com.example.hardwareregister.SortType;
+import com.example.hardwareregister.util.SortType;
 import com.example.hardwareregister.exceptions.ObjectNotFoundException;
 import com.example.hardwareregister.refrigerator.RefrigeratorMapper;
 import com.example.hardwareregister.refrigerator.dao.RefrigeratorRepository;
@@ -10,8 +10,6 @@ import com.example.hardwareregister.refrigerator.refrigeratorModel.RefrigeratorM
 import com.example.hardwareregister.refrigerator.refrigeratorModel.dao.RefrigeratorModelRepository;
 import com.example.hardwareregister.refrigerator.refrigeratorModel.dto.RefrigeratorModelDto;
 import com.example.hardwareregister.refrigerator.refrigeratorModel.model.RefrigeratorModel;
-import com.example.hardwareregister.smartphone.smartphoneModel.SmartphoneModelMapper;
-import com.example.hardwareregister.tv.tvModel.dto.TvModelDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

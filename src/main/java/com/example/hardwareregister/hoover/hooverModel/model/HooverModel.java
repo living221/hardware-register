@@ -1,16 +1,17 @@
 package com.example.hardwareregister.hoover.hooverModel.model;
 
 import com.example.hardwareregister.hoover.model.Hoover;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Objects;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
@@ -47,4 +48,17 @@ public class HooverModel {
     @ManyToOne
     @JoinColumn(name = "hoover_id", nullable = false)
     private Hoover hoover;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        HooverModel that = (HooverModel) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

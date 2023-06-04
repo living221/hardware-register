@@ -1,6 +1,6 @@
 package com.example.hardwareregister.hoover.service;
 
-import com.example.hardwareregister.SortType;
+import com.example.hardwareregister.util.SortType;
 import com.example.hardwareregister.hoover.dto.HooverDto;
 import com.example.hardwareregister.hoover.hooverModel.dto.HooverModelDto;
 

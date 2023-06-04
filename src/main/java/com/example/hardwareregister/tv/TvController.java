@@ -1,16 +1,20 @@
 package com.example.hardwareregister.tv;
 
-import com.example.hardwareregister.SortType;
 import com.example.hardwareregister.tv.dto.TvDto;
 import com.example.hardwareregister.tv.service.TvService;
 import com.example.hardwareregister.tv.tvModel.dto.TvModelDto;
+import com.example.hardwareregister.util.Create;
+import com.example.hardwareregister.util.SortType;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/tv")
@@ -22,7 +26,8 @@ public class TvController {
 
     @PostMapping
     @Operation(summary = "Добавление новой линейки телевизоров")
-    public TvDto addTv(@RequestBody TvDto tvDto) {
+    public TvDto addTv(@Validated({Create.class})
+                       @RequestBody TvDto tvDto) {
         return tvService.addNewTv(tvDto);
     }
 
@@ -64,6 +69,7 @@ public class TvController {
     public TvModelDto addTvModel(
             @Parameter(description = "Id телевизора")
             @PathVariable Long tvId,
+            @Validated({Create.class})
             @RequestBody TvModelDto tvModelDto) {
         return tvService.addTvModel(tvId, tvModelDto);
     }
@@ -73,6 +79,11 @@ public class TvController {
     public List<TvModelDto> searchTvModels(
             @Parameter(description = "Текст для поиска")
             @RequestParam(name = "text") String text) {
+
+        if (Objects.isNull(text) || text.isEmpty()) {
+            return Collections.emptyList();
+        }
+
         return tvService.searchTvModels(text);
     }
 

@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:14.7-alpine
+    volumes:
+      - /var/lib/postgresql/data/
+    ports:
+      - "6541:5432"
+    environment:
+      - POSTGRES_DB=hwreg
+      - POSTGRES_USER=hwreg
+      - POSTGRES_PASSWORD=hwreg
+
+  hardware-register:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/hwreg
+      - POSTGRES_USER=hwreg
+      - POSTGRES_PASSWORD=hwreg

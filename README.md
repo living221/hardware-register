@@ -21,17 +21,11 @@ cd hardware-register
 
 Build the project using Maven:
 
-./mvnw clean install
+mvn clean install
 
-Run the Docker container for PostgreSQL:
+Run the Docker container for running the application
 
 docker-compose up -d
-
-### Running the Application
-
-Run the application using the following command:
-
-`./mvnw spring-boot:run`
 
 The application will start on port 8080. Access the public API at
 `http://localhost:8080`.

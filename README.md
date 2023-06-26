@@ -21,9 +21,9 @@ cd hardware-register
 
 Build the project using Maven:
 
-./mvnw clean install
+mvn clean install
 
-Run the Docker container for PostgreSQL:
+Run the Docker container for running the application
 
 docker-compose up -d
 
